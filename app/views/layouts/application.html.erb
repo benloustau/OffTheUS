@@ -1,0 +1,39 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Off-The_US</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+	<header>
+
+		<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+ 
+	<% if current_user %>
+	  <p class="logged_in">Hey <%= current_user.fname %> | <%= link_to 'Home', user_path(current_user) %> |
+	    <%= link_to 'Sign out', destroy_user_session_path, method: :delete, :style => "color:blacka"  %>
+	  </p>
+	<% else %>
+		<p class="logged_in">
+		<%= link_to 'sign in', new_user_session_path, :style => "color:black" %> |
+		<%= link_to 'sign up', new_user_registration_path, :style => "color:black" %>
+		</p>
+	<% end %>
+
+    <p class="alert"><%= alert %></p>
+
+
+	</header>
+
+<%= yield %>
+
+</body>
+
+</html>
